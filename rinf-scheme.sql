@@ -58,7 +58,7 @@ create table friends(
 	id_target varchar(50) not null,
 	date_sent datetime not null,
 	date_anwser datetime,
-	status char(1),
+	`status` char(1),
 	primary key (id),
 	foreign key (id_request) references users(email),
 	foreign key (id_target) references users(email),
