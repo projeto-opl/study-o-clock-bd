@@ -20,7 +20,7 @@ create table users(
 	email varchar(50) not null,
 	name varchar(50) not null,
 	pass varchar(40) not null,
-	img varchar(50),
+	img varchar(50) default 'userProfile/profile-picture-placeholder.png',
 	id_schools int,
 	grade varchar(10),
 	sex char(1),
@@ -28,7 +28,7 @@ create table users(
 	cellphone varchar(20),
 	birthdate date,
 	bio text,
-	validated tinyint(1), -- 1 to true; 0 to false
+	validated tinyint(1) default 0, -- 1 to true; 0 to false
 	primary key (email),
 	foreign key (id_cities) references cities(id),
 	foreign key (id_schools) references schools(id),
