@@ -1,0 +1,1 @@
+create view `gp_adms` u.name as 'Nome do user', g.name as 'Nome do grupo', if(r.is_adm = 1, 'sim', 'nao') as 'E administrador?' from rel_groups r left join groups g on r.id_groups = g.id left join users u on u.email = r.id_users;

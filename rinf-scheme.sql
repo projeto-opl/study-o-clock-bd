@@ -16,15 +16,22 @@ create table schools(
 	primary key (id)
 );
 
+create table extra_course(
+	id int auto_increment,
+	name varchar(50),
+	primary key(id)
+);
+
 create table users(
 	email varchar(50) not null,
 	name varchar(50) not null,
 	pass varchar(40) not null,
 	img varchar(50) default 'userProfile/profile-picture-placeholder.png',
-	id_schools int,
 	grade varchar(10),
 	sex char(1),
+	id_schools int,
 	id_cities int,
+	id_extra_course int,
 	cellphone varchar(20),
 	birthdate date,
 	bio text,
@@ -32,6 +39,7 @@ create table users(
 	primary key (email),
 	foreign key (id_cities) references cities(id),
 	foreign key (id_schools) references schools(id),
+	foreign key (id_extra_course) references extra_course(id),
 	constraint cs_sex check(sex in ('f','m','o')),
 	constraint cs_val check(validated in (0,1))
 );
@@ -62,11 +70,11 @@ create table friends(
 	id_target varchar(50) not null,
 	date_sent datetime not null,
 	date_anwser datetime,
-	`status` char(1),
+	`status` char(1) default 'p',
 	primary key (id),
 	foreign key (id_request) references users(email),
 	foreign key (id_target) references users(email),
-	constraint cs_status check(status in ('p','a','d'))
+	constraint cs_status check(status in ('p','a','d')) /*'p': pendente; 'a': accepted; 'd': declined*/
 );
 
 create table tags(
@@ -135,7 +143,7 @@ create table rel_comments(
 	foreign key (id_posts) references posts(id)
 );
 
-create table area_posts(
+create table area(
 	id int auto_increment,
 	description varchar(30),
 	primary key (id)
@@ -146,7 +154,15 @@ create table rel_areas(
 	id_area int not null,
 	primary key (id_posts, id_area),
 	foreign key (id_posts) references posts(id),
-	foreign key (id_area) references area_posts(id)
+	foreign key (id_area) references areas(id)
+);
+
+create table marks(
+	id int auto_increment,
+	id_users varchar(50) not null,
+	id_area int not null,
+	mark float not null,
+	primary key(id)
 );
 
 create table feeds(
