@@ -35,7 +35,7 @@ create table users(
 	cellphone varchar(20),
 	birthdate date,
 	bio text,
-	validated tinyint(1) default 0, -- 1 to true; 0 to false
+	validated tinyint(1) default 0, /* 1 to true; 0 to false*/
 	primary key (email),
 	foreign key (id_cities) references cities(id),
 	foreign key (id_schools) references schools(id),
@@ -48,12 +48,12 @@ create table reputation(
 	id int auto_increment,
 	id_target varchar(50) not null,
 	id_commenter varchar(50) not null,
-	stance char(1) not null, -- posição, postura: em relação ao comentario
+	stance char(1) not null, /* posição, postura: em relação ao comentario*/
 	message text not null,
 	primary key (id),
 	foreign key (id_target) references users(email),
 	foreign key (id_commenter) references users(email),
-	constraint cs_stance check(stance in ('l','d')) -- 'l'ike / 'd'islike
+	constraint cs_stance check(stance in ('l','d')) /* 'l'ike / 'd'islike*/
 );
 
 /*o usuário pode ter mais de um email vinculado à conta*/
@@ -94,7 +94,7 @@ create table groups(
 create table rel_groups(
 	id_users varchar(50),
 	id_groups int,
-	is_adm tinyint(1), -- 0 - não é adm; 1 - é adm
+	is_adm tinyint(1), /* 0 - não é adm; 1 - é adm*/
 	primary key (id_users, id_groups),
 	foreign key (id_users) references users(email),
 	foreign key (id_groups) references groups(id),
@@ -115,7 +115,7 @@ create table posts(
 	id_type int,
 	`date` date not null, 
 	`time` time not null,
-	can_comments tinyint(1) default 1, -- recebe {0, 1}. 1: true; 0: false;
+	can_comments tinyint(1) default 1, /* recebe {0, 1}. 1: true; 0: false;*/
 	primary key (id),
 	foreign key (id_users) references users(email),
 	foreign key (id_groups) references groups(id),
@@ -143,7 +143,7 @@ create table rel_comments(
 	foreign key (id_posts) references posts(id)
 );
 
-create table area(
+create table areas(
 	id int auto_increment,
 	description varchar(30),
 	primary key (id)
@@ -179,7 +179,7 @@ create table notifications(
 	content text not null,
 	`date` date not null,
 	`time` time not null,
-	seen tinyint default 0, -- 1: visto / 0:não visto
+	seen tinyint default 0, /* 1: visto / 0:não visto*/
 	primary key (id),
 	foreign key (id_users) references users(email),
 	constraint cs_s0 check(seen in (0,1))
