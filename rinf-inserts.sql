@@ -10,7 +10,7 @@ insert into schools(`name`) values
 ('ETEP Jacareí'),
 ('ETEP Taubaté');
 
-insert into users(email, `name`, pass, id_schools, sex, id_cities, birthdate, validate) values
+insert into users(email, `name`, pass, id_schools, sex, id_cities, birthdate, validated) values
 ('vhoyer@live.com', 'Vinicius Hoyer', 'pass123', 1, 'm', 1, '1999-12-06', 1),
 ('test2@email.com', 'Joaquinvaldison', 'pass123', 1, 'm', 1, '2016-04-15', 1),
 ('test3@email.com', 'Joaniscrevison', 'pass123', 1, 'm', 1, '2000-06-30', 1),
@@ -56,7 +56,7 @@ insert into rel_groups(id_users, id_groups, is_adm) values
 ('test2@email.com', 3, 0),
 ('test3@email.com', 2, 0);
 
-insert into area(description) values
+insert into areas(description) values
 ('matematica'),
 ('fisica'),
 ('quimica'),
