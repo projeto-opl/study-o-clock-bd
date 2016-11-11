@@ -65,32 +65,36 @@ insert into rel_groups(id_users, id_groups, is_adm) values
 ('test2@email.com', 3, 0),
 ('test3@email.com', 2, 0);
 
-insert into areas(description) values
-('matematica'),
-('fisica'),
-('quimica'),
-('biologia'),
-('historia'),
-('geogafia'),
-('sociologia'),
-('filosofia'),
-('lingua portuguesa'),
-('literatura brasileira'),
-('lingua inglesa'),
-('educacao fisica'),
-('arte');
+/*
+ *insert into areas(description) values
+ *('matematica'),
+ *('fisica'),
+ *('quimica'),
+ *('biologia'),
+ *('historia'),
+ *('geogafia'),
+ *('sociologia'),
+ *('filosofia'),
+ *('lingua portuguesa'),
+ *('literatura brasileira'),
+ *('lingua inglesa'),
+ *('educacao fisica'),
+ *('arte');
+ */
 
-insert into marks(id_users, id_area, mark) values
-('vhoyer@live.com',  1, 9.3),
-('vhoyer@live.com',  2, 7.9),
-('vhoyer@live.com',  3, 6.0),
-('vhoyer@live.com',  4, 9.2),
-('vhoyer@live.com',  5, 9.0),
-('vhoyer@live.com',  6, 7.5),
-('vhoyer@live.com',  7, 8.0),
-('vhoyer@live.com',  8, 6.4),
-('vhoyer@live.com',  9, 7.0),
-('vhoyer@live.com', 10, 7.0),
-('vhoyer@live.com', 11, 5.5),
-('vhoyer@live.com', 12, 6.2),
-('vhoyer@live.com', 13, 4.5);
+/*
+ *insert into marks(id_users, id_area, mark) values
+ *('vhoyer@live.com',  1, 9.3),
+ *('vhoyer@live.com',  2, 7.9),
+ *('vhoyer@live.com',  3, 6.0),
+ *('vhoyer@live.com',  4, 9.2),
+ *('vhoyer@live.com',  5, 9.0),
+ *('vhoyer@live.com',  6, 7.5),
+ *('vhoyer@live.com',  7, 8.0),
+ *('vhoyer@live.com',  8, 6.4),
+ *('vhoyer@live.com',  9, 7.0),
+ *('vhoyer@live.com', 10, 7.0),
+ *('vhoyer@live.com', 11, 5.5),
+ *('vhoyer@live.com', 12, 6.2),
+ *('vhoyer@live.com', 13, 4.5);
+ */
