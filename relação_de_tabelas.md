@@ -1,0 +1,9 @@
+- `cities`
+- `schools`
+- `extra_course`
+- `users`
+- `emails`
+- `friends`
+- `tags`
+- `groups`
+- `rel_groups`
