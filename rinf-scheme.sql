@@ -44,17 +44,19 @@ create table users(
 	constraint cs_val check(validated in (0,1))
 );
 
-create table reputation(
-	id int auto_increment,
-	id_target varchar(50) not null,
-	id_commenter varchar(50) not null,
-	stance char(1) not null, /* posição, postura: em relação ao comentario*/
-	message text not null,
-	primary key (id),
-	foreign key (id_target) references users(email),
-	foreign key (id_commenter) references users(email),
-	constraint cs_stance check(stance in ('l','d')) /* 'l'ike / 'd'islike*/
-);
+/*
+ *create table reputation(
+ *    id int auto_increment,
+ *    id_target varchar(50) not null,
+ *    id_commenter varchar(50) not null,
+ *    stance char(1) not null, [> posição, postura: em relação ao comentario<]
+ *    message text not null,
+ *    primary key (id),
+ *    foreign key (id_target) references users(email),
+ *    foreign key (id_commenter) references users(email),
+ *    constraint cs_stance check(stance in ('l','d')) [> 'l'ike / 'd'islike<]
+ *);
+ */
 
 /*o usuário pode ter mais de um email vinculado à conta*/
 create table emails(
@@ -94,7 +96,7 @@ create table groups(
 create table rel_groups(
 	id_users varchar(50),
 	id_groups int,
-	is_adm tinyint(1), /* 0 - não é adm; 1 - é adm*/
+	is_adm tinyint(1) default 0, /* 0 - não é adm; 1 - é adm*/
 	primary key (id_users, id_groups),
 	foreign key (id_users) references users(email),
 	foreign key (id_groups) references groups(id),
@@ -116,7 +118,7 @@ create table rel_groups(
  *    id_groups int,
  *    content text not null,
  *    id_type int,
- *    `date` date not null, 
+ *    `date` date not null,
  *    `time` time not null,
  *    can_comments tinyint(1) default 1, [> recebe {0, 1}. 1: true; 0: false;<]
  *    primary key (id),
