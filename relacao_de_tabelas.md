@@ -12,8 +12,7 @@
 - `reputation`
 - `type_posts`
 - `posts`
-- `comments`
-- `rel_comments`
+	- `comments`
 - `areas`
 - `rel_area`
 - `marks`
