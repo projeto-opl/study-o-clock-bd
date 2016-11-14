@@ -2,38 +2,42 @@ drop database if exists rinf;
 create database rinf;
 use rinf;
 
-/*o usuario cadastra as cidades, mas pra cadastrar, a caixa de texto onde ele vai colocar o nome dela, vai mostrar os resultados que ja existem. estilo auto complete*/
-create table cities(
-	id int auto_increment,
-	name varchar(50),
-	primary key (id)
-);
-
-/*o usuario cadastra as escolas, mas pra cadastrar, a caixa de texto onde ele vai colocar o nome dela, vai mostrar os resultados que ja existem. estilo auto complete*/
-create table schools(
-	id int auto_increment,
-	name varchar(50),
-	primary key (id)
-);
-
-create table extra_course(
-	id int auto_increment,
-	name varchar(50),
-	primary key(id)
-);
+/*
+ *[>o usuario cadastra as cidades, mas pra cadastrar, a caixa de texto onde ele vai colocar o nome dela, vai mostrar os resultados que ja existem. estilo auto complete<]
+ *create table cities(
+ *    id int auto_increment,
+ *    name varchar(50),
+ *    primary key (id)
+ *);
+ *
+ *[>o usuario cadastra as escolas, mas pra cadastrar, a caixa de texto onde ele vai colocar o nome dela, vai mostrar os resultados que ja existem. estilo auto complete<]
+ *create table schools(
+ *    id int auto_increment,
+ *    name varchar(50),
+ *    primary key (id)
+ *);
+ *
+ *create table extra_course(
+ *    id int auto_increment,
+ *    name varchar(50),
+ *    primary key(id)
+ *);
+ */
 
 create table users(
 	email varchar(50) not null,
 	name varchar(50) not null,
 	pass varchar(40) not null,
 	img varchar(50) default 'userProfile/profile-picture-placeholder.png',
-	grade varchar(10),
-	sex char(1),
-	id_schools int,
-	id_cities int,
-	id_extra_course int,
-	cellphone varchar(20),
-	birthdate date,
+	/*
+	 *grade varchar(10),
+	 *sex char(1),
+	 *id_schools int,
+	 *id_cities int,
+	 *id_extra_course int,
+	 *cellphone varchar(20),
+	 *birthdate date,
+	 */
 	bio text,
 	validated tinyint(1) default 0, /* 1 to true; 0 to false*/
 	primary key (email),
@@ -58,13 +62,15 @@ create table users(
  *);
  */
 
-/*o usuário pode ter mais de um email vinculado à conta*/
-create table emails(
-	email varchar(100) not null,
-	id_users varchar(50) not null,
-	primary key (email),
-	foreign key (id_users) references users(email)
-);
+/*
+ *[>o usuário pode ter mais de um email vinculado à conta<]
+ *create table emails(
+ *    email varchar(100) not null,
+ *    id_users varchar(50) not null,
+ *    primary key (email),
+ *    foreign key (id_users) references users(email)
+ *);
+ */
 
 create table friends(
 	id int auto_increment,
@@ -79,18 +85,20 @@ create table friends(
 	constraint cs_status check(status in ('p','a','d')) /*'p': pendente; 'a': accepted; 'd': declined*/
 );
 
-create table tags(
-	id int auto_increment,
-	description varchar(50),
-	primary key (id)
-);
+/*
+ *create table tags(
+ *    id int auto_increment,
+ *    description varchar(50),
+ *    primary key (id)
+ *);
+ */
 
 create table groups(
 	id int auto_increment,
 	name varchar(40),
-	tags int,
-	primary key (id),
-	foreign key (tags) references tags(id)
+	/*tags int,*/
+	primary key (id)/*,*/
+	/*foreign key (tags) references tags(id)*/
 );
 
 create table rel_groups(
