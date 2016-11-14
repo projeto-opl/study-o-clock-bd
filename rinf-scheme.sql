@@ -28,7 +28,7 @@ create table users(
 	email varchar(50) not null,
 	name varchar(50) not null,
 	pass varchar(40) not null,
-	img varchar(50) default 'userProfile/profile-picture-placeholder.png',
+	img varchar(50) default 'profile-picture-placeholder.png',
 	/*
 	 *grade varchar(10),
 	 *sex char(1),
@@ -41,10 +41,12 @@ create table users(
 	bio text,
 	validated tinyint(1) default 0, /* 1 to true; 0 to false*/
 	primary key (email),
-	foreign key (id_cities) references cities(id),
-	foreign key (id_schools) references schools(id),
-	foreign key (id_extra_course) references extra_course(id),
-	constraint cs_sex check(sex in ('f','m','o')),
+	/*
+	 *foreign key (id_cities) references cities(id),
+	 *foreign key (id_schools) references schools(id),
+	 *foreign key (id_extra_course) references extra_course(id),
+	 *constraint cs_sex check(sex in ('f','m','o')),
+	 */
 	constraint cs_val check(validated in (0,1))
 );
 
