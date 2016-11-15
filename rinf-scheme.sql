@@ -121,39 +121,33 @@ create table rel_groups(
  *);
  */
 
-/*
- *create table posts(
- *    id int auto_increment,
- *    id_users varchar(50) not null,
- *    id_groups int,
- *    content text not null,
- *    id_type int,
- *    `date` date not null,
- *    `time` time not null,
- *    can_comments tinyint(1) default 1, [> recebe {0, 1}. 1: true; 0: false;<]
- *    primary key (id),
- *    foreign key (id_users) references users(email),
- *    foreign key (id_groups) references groups(id),
- *    foreign key (id_type) references type_posts(id),
- *    constraint cs_cc check(can_comments in (0,1))
- *);
- */
+create table posts(
+	id int auto_increment,
+	id_users varchar(50) not null,
+	id_groups int,
+	content text not null,
+	`date` date not null,
+	`time` time not null,
+	can_comments tinyint(1) default 1, /* recebe {0, 1}. 1: true; 0: false;*/
+	primary key (id),
+	foreign key (id_users) references users(email),
+	foreign key (id_groups) references groups(id),
+	constraint cs_cc check(can_comments in (0,1))
+);
 
-/*
- *create table comments(
- *    id int auto_increment,
- *    id_posts int,
- *    id_comments int,
- *    id_users varchar(50),
- *    content text not null,
- *    `date` date not null,
- *    `time` time not null,
- *    primary key (id),
- *    foreign key (id_users) references users(email),
- *    foreign key (id_posts) references posts(id),
- *    foreign key (id_comments) references comments(id)
- *);
- */
+create table comments(
+	id int auto_increment,
+	id_posts int,
+	id_comments int,
+	id_users varchar(50),
+	content text not null,
+	`date` date not null,
+	`time` time not null,
+	primary key (id),
+	foreign key (id_users) references users(email),
+	foreign key (id_posts) references posts(id),
+	foreign key (id_comments) references comments(id)
+);
 
 /*
  *create table areas(
