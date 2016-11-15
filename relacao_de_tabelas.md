@@ -5,6 +5,10 @@
 - `rel_groups`
 - `posts`
 	- `comments`
+- `forum_posts`
+- `forum_replies`
+- `forum_tags`
+- `forum_tags_posts`
 
 ####	tables off
 - `emails`

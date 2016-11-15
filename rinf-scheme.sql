@@ -200,3 +200,37 @@ create table comments(
  *    constraint cs_s0 check(seen in (0,1))
  *);
  */
+
+create table forum_posts(
+	id int auto_increment,
+	id_users varchar(50) not null,
+	title varchar(255) not null,
+	content text not null,
+	`datetime` datetime not null,
+	closed tinyint(1) default 0, /*1:resolvido / 0:aberto*/
+	primary key (id),
+	foreign key (id_users) references users(email)
+);
+
+create table forum_replies(
+	id int auto_increment,
+	id_users varchar(50) not null,
+	content text not null,
+	`datetime` datetime not null,
+	primary key (id),
+	foreign key (id_users) references users(email)
+);
+
+create table forum_tags(
+	id int auto_increment,
+	tag varchar(255) not null,
+	primary key (id)
+);
+
+create table forum_tags_posts(
+	id_posts int not null,
+	id_tags int not null,
+	primary key (id_posts, id_tags),
+	foreign key (id_posts) references forum_posts(id),
+	foreign key (id_tags) references forum_tags(id)
+);
