@@ -138,15 +138,14 @@ create table posts(
 create table comments(
 	id int auto_increment,
 	id_posts int,
-	id_comments int,
+	/*id_comments int,*/
 	id_users varchar(50),
 	content text not null,
-	`date` date not null,
-	`time` time not null,
+	`datetime` datetime not null,
 	primary key (id),
 	foreign key (id_users) references users(email),
-	foreign key (id_posts) references posts(id),
-	foreign key (id_comments) references comments(id)
+	/*foreign key (id_comments) references comments(id),*/
+	foreign key (id_posts) references posts(id)
 );
 
 /*
